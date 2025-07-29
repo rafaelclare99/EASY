@@ -1,21 +1,37 @@
-public class Solution {
-    public int[] TwoSum(int[] nums, int target) {
-         Dictionary<int, int> map = new Dictionary<int, int>();
+using System;
+using System.Collections.Generic;
 
-        for (int i = 0; i < nums.Length; i++) {
+class Program
+{
+    static void Main()
+    {
+        int[] nums = { 2, 7, 11, 15 };
+        int target = 9;
+
+        int[] resultado = TwoSum(nums, target);
+
+        Console.WriteLine($"[{resultado[0]}, {resultado[1]}]");
+    }
+
+    static int[] TwoSum(int[] nums, int target)
+    {
+        Dictionary<int, int> map = new Dictionary<int, int>();
+
+        for (int i = 0; i < nums.Length; i++)
+        {
             int complemento = target - nums[i];
 
-            if (map.ContainsKey(complemento)) {
+            if (map.ContainsKey(complemento))
+            {
                 return new int[] { map[complemento], i };
             }
 
-            
-            if (!map.ContainsKey(nums[i])) {
+            if (!map.ContainsKey(nums[i]))
+            {
                 map[nums[i]] = i;
             }
         }
 
-       
-        return new int[0];
+        return new int[0]; // nunca será alcançado, pois a questão garante que há uma solução
     }
 }
